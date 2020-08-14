@@ -14,5 +14,8 @@ module.exports = {
         'linebreak-style': 0,
         indent: 0,
         'no-underscore-dangle': 0,
+        'no-nested-ternary': 0,
+        'no-unused-vars': 0,
+        'prefer-template': 0,
     },
 };

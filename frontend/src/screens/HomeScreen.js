@@ -1,4 +1,6 @@
+
 import axios from 'axios';
+import Rating from '../components/Rating';
 
 const HomeScreen = {
   render: async () => {
@@ -12,15 +14,21 @@ const HomeScreen = {
             ${products
               .map(
                 (product) => `<li class="product products__item">
-                        <a href="/#/product/${product._id}" class="product__image">
-                            <img src="${product.image}" alt="${product.name}" class="product__picture">
-                        </a>
-                        <div class="product__body">
-                            <a href="/#/product/${product._id}" class="product__name">${product.name}</a>
-                            <div class="product__brand">${product.brand}</div>
-                            <div class="product__price">$${product.price}</div>
-                        </div>
-                    </li>`,
+                  <a href="/#/product/${product._id}" class="product__image">
+                      <img src="${product.image}" alt="${product.name}" class="product__picture">
+                  </a>
+                  <div class="product__body">
+                      <a href="/#/product/${product._id}" class="product__name">${product.name}</a>
+                      <div class="product__brand">${product.brand}</div>
+                      <div class="product-rating">
+                          ${Rating.render({
+                            value: product.rating,
+                            text: `${product.numReviews} reviews`,
+                          })}
+                      </div>
+                    <div class="product__price">$${product.price}</div>
+                  </div>
+              </li>`,
               )
               .join('')}
         </ul>`;
