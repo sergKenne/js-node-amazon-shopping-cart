@@ -3,10 +3,15 @@ import { getProduct } from '../api';
 import Rating from '../components/Rating';
 
 const ProductScreen = {
+    cart_render: () => {
+        const request = parseRequestUrl();
+        document.getElementById('add-button').addEventListener("click", () => {
+            document.location.hash = `/cart/${request.id}`;
+        });
+    },
     render:  async() => {
        const request = parseRequestUrl();
        const product = await getProduct(request.id);
-       console.log(product)
        if(product.error) {
            return `<div>${product.error}</div>`
        }
